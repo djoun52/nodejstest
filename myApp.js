@@ -6,6 +6,8 @@ var app = express();
 viewsPath = __dirname + "/views/"
 app.use("/public", express.static(__dirname + "/public"));
 app.use("/controller", express.static(__dirname + '/controller'))
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 
 
@@ -55,12 +57,10 @@ app.get('/name', (req,res)=>{
     })
 })
 
-app.use(bodyParser.urlencoded({ extended: false }));
-
-
-app.use(bodyParser.json());
-
-
+app.post('/name', (req,res)=>{
+    let string = req.body.first + " " + req.body.last
+    res.json({ name: string });
+})
 
 
 

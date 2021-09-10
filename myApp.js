@@ -1,4 +1,5 @@
 require('dotenv').config()
+let bodyParser = require('body-parser')
 var express = require('express');
 var app = express();
 
@@ -54,10 +55,10 @@ app.get('/name', (req,res)=>{
     })
 })
 
+app.use(bodyParser.urlencoded({ extended: false }));
 
 
-
-
+app.use(bodyParser.json());
 
 
 
